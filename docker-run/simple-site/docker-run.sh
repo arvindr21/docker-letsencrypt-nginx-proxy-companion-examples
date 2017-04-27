@@ -37,8 +37,8 @@ docker run -d \
 echo "Starting simple-site nginx example..."
 docker run -d \
     --name simple-site \
-    -e "VIRTUAL_HOST=site.example.com" \
-    -e "LETSENCRYPT_HOST=site.example.com" \
-    -e "LETSENCRYPT_EMAIL=mail@example.com" \
+    -e "VIRTUAL_HOST=dhub.theiotsuitcase.com" \
+    -e "LETSENCRYPT_HOST=dhub.theiotsuitcase.com" \
+    -e "LETSENCRYPT_EMAIL=arvind@theiotsuitcase.com" \
     -v $(pwd)/../../volumes/examples/simple-site/conf.d/:/etc/nginx/conf.d \
     nginx
