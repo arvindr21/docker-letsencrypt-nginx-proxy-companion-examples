@@ -9,7 +9,7 @@ docker run -d -p 80:80 -p 443:443 \
     -v /etc/nginx/conf.d  \
     -v /etc/nginx/vhost.d \
     -v /usr/share/nginx/html \
-    -v $(pwd)/../../volumes/proxy/certs:/etc/nginx/certs:ro \
+    -v /etc/ssl/private/:/etc/nginx/certs:ro \
     nginx
 
 # This nginx-gen container using the docker-gen image will generate a 'default.conf' file from the 'nginx.tmpl' located in volumes/proxy/templates.
@@ -27,7 +27,7 @@ echo "Starting letsencrypt-nginx-proxy-companion..."
 docker run -d \
     -e "NGINX_DOCKER_GEN_CONTAINER=nginx-gen" \
     --volumes-from nginx \
-    -v $(pwd)/../../volumes/proxy/certs:/etc/nginx/certs:rw \
+    -v /etc/ssl/private/:/etc/nginx/certs:rw \
     -v /var/run/docker.sock:/var/run/docker.sock:ro \
     jrcs/letsencrypt-nginx-proxy-companion
 
